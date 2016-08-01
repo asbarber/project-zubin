@@ -41,7 +41,7 @@ HIRE_ME_QUESTION = {
 }
 
 NO_REGRETS_QUESTION = {
-	'title': 'Are you regretting your commitment to this hunt yet?',
+	'title': 'Are you regretting your commitment to this scavenger hunt yet?',
 	'acceptor': lambda x: x.lower() in ['no', 'n']
 }
 # -----------------------------------------------------------------------------
@@ -81,7 +81,7 @@ LINKEDIN_QUESTION = {
 # Final Interactive Questions
 # -----------------------------------------------------------------------------
 DHMIS_QUESTION = {
-	'title': 'What color is not the creative color?',
+	'title': 'What color is not a creative color?',
 	'subtitle': '<a href=\'https://www.youtube.com/watch?v=9C_HReR_McQ\' target=\'_blank\'>Watch the video!</a>',
 	'acceptor': lambda x: x.lower() in ['green']
 }
