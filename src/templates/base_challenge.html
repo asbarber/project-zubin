@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="block">
+	<form method="POST" id="submitForm">
+		{% csrf_token %}
+
+		<!-- Text -->
+		<h1>{{title}}</h1>
+		{% if subtitle %}
+			<p>{{subtitle | safe}}</p>
+		{% endif %}
+
+		<!-- Submit -->
+		<input type="text" name="{{key}}" value="" placeholder="Secret Key" id="{{key}}" autofocus />
+		<button type="submit" form="submitForm" value="Submit">Submit</button>
+
+		<!-- Keys -->
+		{% for k in keys %}
+			{% if k.value %}{% if k.name != key %}<input type="hidden" value="{{k.value}}" name="{{k.name}}" id="{{k.name}}" /> {% endif %}{% endif %}
+		{% endfor %}
+
+		<!-- Hint -->
+		{% if hint %}
+			<button type="button" data-toggle="modal" data-target="#hintModal">Show Hint</button>			
+			<!-- Modal -->
+			<div class="modal fade" id="hintModal" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Hint</h4>
+						</div>
+						<div class="modal-body">
+							<p>{{hint}}</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>			
+		{% endif %}
+
+		<!-- Error -->
+		{% if failMessage %}
+			<div class="alert alert-danger invalid-login" role="alert">
+				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				{{ failMessage }}
+			</div>
+		{% endif %}		
+	</form>
+
+	<!-- Goofs -->
+	<div>
+		<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Do you surrender?</a>
+	</div>
+</div>
+
+{% endblock %}

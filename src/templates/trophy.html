@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="outer-block">
+<div class="trophy">
+		<!-- 16:9 aspect ratio -->
+		<div class="embed-responsive embed-responsive-16by9">
+		  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/o06eW9aRyQE" frameborder="0" allowfullscreen></iframe>
+		</div>
+		<!-- <iframe width="854" height="480" src="https://www.youtube.com/embed/o06eW9aRyQE" frameborder="0" allowfullscreen></iframe> -->
+
+		<!-- Keys -->
+		{% for k in keys %}
+			{% if k.value %}{% if k.name != key %}<input type="hidden" value="{{k.value}}" name="{{k.name}}" id="{{k.name}}" /> {% endif %}{% endif %}
+		{% endfor %}
+	</form>
+</div>
+</div>
+
+{% endblock %}

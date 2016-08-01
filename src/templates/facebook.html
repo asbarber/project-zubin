@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="block">
+	<form method="POST" id="submitForm">
+		{% csrf_token %}
+
+		<!-- Text -->
+		<h1>Need to find me on Facebook?</h1>
+		<p>Don't worry, this isn't required for the Scavenger Hunt.</p>
+
+		<!-- Submit -->
+		<div class="inner-block">
+			<div>
+				<span class="glyphicon glyphicon-user"></span>
+				<a href="https://www.facebook.com/aaron.barber.9615" target="_blank"> Aaron's Profile</a>
+			</div>
+			<input type="hidden" name="{{key}}" value="facebookKey" id="{{key}}" autofocus />
+			<button type="submit" form="submitForm" value="Submit">Next</button>
+		</div>
+
+		<!-- Keys -->
+		{% for k in keys %}
+			{% if k.value %}{% if k.name != key %}<input type="hidden" value="{{k.value}}" name="{{k.name}}" id="{{k.name}}" /> {% endif %}{% endif %}
+		{% endfor %}
+	</form>
+</div>
+
+{% endblock %}
