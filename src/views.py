@@ -106,7 +106,6 @@ TROPHY = {
 
 # Setup
 # -----------------------------------------------------------------------------
-NUM_KEYS = 14
 CHALLENGES = [
 	GOLDEN_TICKET_QUESTION,
 	GRADUATE_QUESTION,
@@ -128,6 +127,7 @@ CHALLENGES = [
 
 	TROPHY
 ]
+NUM_KEYS = len(CHALLENGES)
 
 # Default constructor
 for i, question in enumerate(CHALLENGES):
